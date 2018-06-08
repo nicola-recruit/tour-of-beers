@@ -1,0 +1,10 @@
+<div *ngIf="isWrongBeerCode(); else beerProfileForm">
+    <h2 class="mat-h2">The beer you're trying to edit was not found. Do you want to create a new one?</h2>
+    <button mat-raised-button (click)="goToNewBeerPage()">Go!</button>
+    <button mat-raised-button (click)="goToHomePage()">Cancel</button>
+</div>
+
+<ng-template #beerProfileForm>
+    <h2 class="mat-h2">Beer profile</h2>
+    <beer-edit-form [beerProfile]="beerToEdit"></beer-edit-form>
+</ng-template>

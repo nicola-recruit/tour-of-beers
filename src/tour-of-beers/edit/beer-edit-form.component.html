@@ -1,0 +1,56 @@
+<form [formGroup]="beerEditFormGroup" fxLayout="column">
+    <div fxLayout="row">
+        <div fxFlex="5%"></div>
+        <div fxFlex="25%" fxLayout="column">
+            <mat-form-field>
+                <input type="text" matInput placeholder="Name" formControlName="name">
+                <mat-error>
+                    Please type in a name for this beer
+                </mat-error>
+            </mat-form-field>
+            <mat-select placeholder="Country" formControlName="country">
+                <mat-option *ngFor="let country of countryList" [value]="country.isoCode">
+                    <div [ngClass]="getFlagClasses(country.isoCode)"></div>
+                    {{ country.name }}
+                </mat-option>
+                <mat-error>
+                    Please select a country
+                </mat-error>        
+            </mat-select>
+            <mat-form-field>
+                <input type="number" matInput placeholder="Alcohol percentage" formControlName="alcoholPercentage">
+                <mat-error>
+                    Please insert a number between 0 and 99, one decimal digit is allowed
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="text" matInput placeholder="Description" formControlName="description">
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" matInput placeholder="Rating" formControlName="rating">
+                <mat-error>
+                    Please insert an integer number between 1 and 5
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="url" matInput placeholder="Picture URL" formControlName="picture">
+                <mat-error>
+                    Please insert a valid URL
+                </mat-error>
+            </mat-form-field>
+            <div fxLayout="row">
+                <div fxFlex></div>
+                <img class="beer-preview" mat-card-image [src]="beerEditFormGroup.get('picture').value"/>
+                <div fxFlex></div>
+            </div>
+        </div>
+        <div fxFlex="70%"></div>        
+    </div>
+    <div fxLayout="row">
+        <div fxFlex="5%"></div>
+        <div fxFlex="95%">
+            <button type="reset" mat-raised-button (click)="cancel()">Cancel</button>
+            <button type="submit" mat-raised-button [disabled]="beerEditFormGroup.invalid" (click)="submit()">Submit</button>        
+        </div>
+    </div>
+</form>

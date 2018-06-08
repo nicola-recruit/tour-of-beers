@@ -1,0 +1,7 @@
+<h2 class="mat-h2">Today's beers selection</h2>
+<div fxLayout="row">
+    <beer-profile   fxFlex="20%"
+                    *ngFor="let currentBeer of beerList" 
+                    [beer]="currentBeer">
+    </beer-profile>
+</div>

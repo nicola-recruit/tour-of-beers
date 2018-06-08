@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Tour of beers</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <a class="toolbar-link" [routerLink]="['/home']">
+            <mat-icon svgIcon="home"></mat-icon>
+        </a>
+        <a class="toolbar-link" [routerLink]="['/list']">Beer list</a>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="body-content-padding">
+    <router-outlet></router-outlet>
+</div>

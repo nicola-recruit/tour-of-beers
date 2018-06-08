@@ -1,0 +1,35 @@
+<h2 class="mat-h2">Available beer list</h2>
+<a mat-fab [routerLink]="['/edit']">
+    <mat-icon svgIcon="add"></mat-icon>
+</a>
+<table mat-table [dataSource]="getBeerList()">
+    <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Code </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.code}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef> Country </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.country | isoCountryName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="alcoholPercentage">
+        <th mat-header-cell *matHeaderCellDef> Alcohol % </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.alcoholPercentage}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let beer">
+            <button mat-button (click)="editBeerProfile(beer)">
+                <mat-icon svgIcon="edit"></mat-icon>
+            </button>
+            <button mat-button (click)="deleteBeerProfile(beer)">
+                <mat-icon svgIcon="delete"></mat-icon>
+            </button>
+        </td>
+        </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
